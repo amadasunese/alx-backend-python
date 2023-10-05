@@ -1,6 +1,6 @@
 #!/usr/bin/ env python3
 """
-Returns the value float.
+Annotations
 """
 
 
