@@ -4,9 +4,6 @@ Returns the value float.
 """
 
 
-import math
-
-
 def floor(n: float) -> int:
     """
     Returns the value float.
