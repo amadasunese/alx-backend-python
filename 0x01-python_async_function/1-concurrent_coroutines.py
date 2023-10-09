@@ -13,7 +13,7 @@ async def wait_random(max_delay: int = 10) -> float:
     return delay
 
 
-async def wait_n(n, max_delay):
+async def wait_n(n: int, max_delay: int) -> float:
     # Create a list to store the delays
     delays = []
 
