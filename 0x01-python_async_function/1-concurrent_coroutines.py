@@ -3,6 +3,7 @@
 import asyncio
 import random
 
+
 async def wait_random(max_delay: int = 10) -> float:
     """
     The basics of async
@@ -10,6 +11,7 @@ async def wait_random(max_delay: int = 10) -> float:
     delay = random.uniform(0, max_delay)
     await asyncio.sleep(delay)
     return delay
+
 
 async def wait_n(n, max_delay):
     # Create a list to store the delays
@@ -25,6 +27,7 @@ async def wait_n(n, max_delay):
     delays = sorted(results)
 
     return delays
+
 
 async def main():
     n = 5
