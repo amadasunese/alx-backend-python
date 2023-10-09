@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+"""The basics of async"""
 import asyncio
 import random
 
@@ -16,7 +16,7 @@ async def wait_random(max_delay: int = 10) -> float:
 async def wait_n(n: int, max_delay: int) -> float:
     delays = []
 
-    tasks = [wait_random(max_delay) for _ in range(n)]
+    tasks = [wait_random(max_delay) for i in range(n)]
 
     results = await asyncio.gather(*tasks)
 
