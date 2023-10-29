@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """ Parameterize a unit test, Mock HTTP calls, Parameterize and patch """
-
 import unittest
 from parameterized import parameterized
-from utils import access_nested_map  # Import the function from your utils module
+from utils import access_nested_map
+
 
 class TestAccessNestedMap(unittest.TestCase):
-    """ Test Case"""
-    """to test the function for following inputs """
+    """ Test Case for function access_nested_map """
+
+    # Tests for normal inputs and expected results
     @parameterized.expand([
-        ({"a": 1}, ("a",), 1),  # expected value is 1
-        ({"a": {"b": 2}}, ("a",), {"b": 2}),  # expected value is {"b": 2}
-        ({"a": {"b": 2}}, ("a", "b"), 2),  # expected value is 2
+        ({"a": 1}, ("a",), 1),
+        ({"a": {"b": 2}}, ("a",), {"b": 2}),
+        ({"a": {"b": 2}}, ("a", "b"), 2),
     ])
     def test_access_nested_map(self, nested_map, path, expected):
         """
@@ -23,10 +24,10 @@ class TestAccessNestedMap(unittest.TestCase):
         # Assert that the returned value matches the expected value
         self.assertEqual(result, expected)
 
-    # Test cases for inputs that should raise exceptions
+    # Tests for inputs that should raise exceptions
     @parameterized.expand([
-        ({}, ("a",), "Key not found: 'a'"),  # Expected KeyError message
-        ({"a": 1}, ("a", "b"), "Key not found: 'b'"),  # Expected KeyError message
+        ({}, ("a",), "Key not found: 'a'"),
+        ({"a": 1}, ("a", "b"), "Key not found: 'b'"),
     ])
     def test_access_nested_map_exception(self, nested_map, path, expected_message):
         """
@@ -37,6 +38,7 @@ class TestAccessNestedMap(unittest.TestCase):
 
         # Check that the exception message is as expected
         self.assertEqual(str(cm.exception), expected_message)
+
 
 # This allows running the tests from the command line
 if __name__ == "__main__":
