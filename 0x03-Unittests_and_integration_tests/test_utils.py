@@ -23,6 +23,21 @@ class TestAccessNestedMap(unittest.TestCase):
         # Assert that the returned value matches the expected value
         self.assertEqual(result, expected)
 
+    # Test cases for inputs that should raise exceptions
+    @parameterized.expand([
+        ({}, ("a",), "Key not found: 'a'"),  # Expected KeyError message
+        ({"a": 1}, ("a", "b"), "Key not found: 'b'"),  # Expected KeyError message
+    ])
+    def test_access_nested_map_exception(self, nested_map, path, expected_message):
+        """
+        Test that a KeyError is raised for invalid path access in the nested map
+        """
+        with self.assertRaises(KeyError) as cm:
+            access_nested_map(nested_map, path)
+
+        # Check that the exception message is as expected
+        self.assertEqual(str(cm.exception), expected_message)
+
 # This allows running the tests from the command line
 if __name__ == "__main__":
     unittest.main()
